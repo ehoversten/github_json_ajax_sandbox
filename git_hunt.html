@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>GitHub Hunting</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <!-- add JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var output = '';
+        var displayName;
+
+        $('#find').click(function() {
+          alert("Button clicked, Fetching Data");
+          $.get("https://api.github.com/users/ehoversten", displayName)
+
+          function displayName(data) {
+            console.log(data);
+            displayName = data.name;
+            console.log(displayName);
+            output += '<h1>'+displayName+'</h1>';
+            document.getElementById('changeText').innerHTML = output;
+          }
+
+        });
+
+
+      });
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="navbar">
+          <h1>Assignment: GitHub Hunting</h1>
+        </div>
+      </div>
+      <div class="main_container">
+        <h2 id='changeText'>Placeholder Text</h2>
+        <button id='find' class='btn btn-primary' type="button" name="button">Find Me!</button>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
